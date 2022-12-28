@@ -4,6 +4,7 @@ body {
 
 p {
     color: black;
+    image-rendering: auto;
     text-align: center;
 }
 
