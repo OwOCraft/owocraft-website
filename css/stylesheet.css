@@ -1,16 +1,16 @@
 body {
-    background-color: #000014;
+   background-color: white;
 }
 
 p {
-    color: white;
+    color: black;
+    image-rendering: auto;
     text-align: center;
 }
 
 h1 {
-    color: white;
-    font-family: Roboto;
-    text-align: center;  
+    color: black;
+    text-align: center; 
 }
 
 ul {
@@ -39,10 +39,90 @@ ul {
   }
 h2 {
     text-align: center;
-    color: white;
+    color: black;
+    font-family: Montserrat, Arial;
 }
 
 h3 {
   text-align: center;
+  color: black;
+  font-family: Montserrat, Arial;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  max-width: 500px;
+  margin: auto;
+  margin-left: 90px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  max-width: 500px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
   color: white;
+  max-width: 500px;
+  margin: auto;
+}
+
+.container {
+  padding: 0 16px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+  max-width: 500px;
+  margin: auto;
+}
+
+.title {
+  color: grey;
+  max-width: 500px;
+  margin: auto;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.button:hover {
+  background-color: #555;
+  max-width: 500px;
+  margin: auto;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+    max-width: 500px;
+    margin: auto;
+  }
 }
