@@ -10,8 +10,7 @@ p {
 
 h1 {
     color: black;
-    font-family: Roboto;
-    text-align: center;  
+    text-align: center; 
 }
 
 ul {
@@ -41,9 +40,11 @@ ul {
 h2 {
     text-align: center;
     color: black;
+    font-family: Montserrat, Arial;
 }
 
 h3 {
   text-align: center;
   color: black;
+  font-family: Montserrat, Arial;
 }
