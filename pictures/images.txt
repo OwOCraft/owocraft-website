@@ -1,0 +1,3 @@
+long site length: 1920x515
+
+news size 454x341
