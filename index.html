@@ -25,74 +25,33 @@
 </body>
 <body style="background-color: #bfbfbf;">
     <h2 style="font-size: 52px;">Notice Board</h2>
+    <center>
     <p>Server Events and news</p>
-    <br>
+    <div id="latest-status"></div>
     <!--The lines below are for news and events only-->
-    </br>
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <img src="pictures/4783294_nfjlakfhdajfk.png" alt="img" style="width:100%">
-      <div class="container">
-        <h2>OwOCraft Courthouse is now open!</h2>
-        <p>We are proud to announce that the courthouse for OwOCraft is now open to the public!</p>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="pictures/7c5178_1b31c69493fb45deab454daea4c36a33~mv2.webp" alt="img" style="width:100%">
-      <div class="container">
-        <h2>Release Date for OwOCraft 12</h2>
-        <p>Hello everyone! The OwOCraft server should be avalible in the next few days! We are very close to completion.</p>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="pictures/7c5178_1b31c69493fb45deab454daea4c36a33~mv2.webp" alt="img" style="width:100%">
-      <div class="container">
-        <h2>Contributers Needed!</h2>
-        <p>We are looking for people to help with the website's development! If you would like to help, contact logzinga!</p>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="pictures/7c5178_1b31c69493fb45deab454daea4c36a33~mv2.webp" alt="img" style="width:100%">
-      <div class="container">
-        <h2>Planned Release for: OwOCraft 12</h2>
-        <p>OwOCraft 12 is planned for release sometime in December 2022, but if I am unable to update the server, it can be delayed until January.</p>
-        <p>More information coming soon.</p>
-      </div>
-    </div>
-  </div>
-    <!--The lines above are for news and events only-->
-    <br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br></br><br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var username = '109952820770190701';
+    var interval = 5000; // update every 5 seconds
+    setInterval(function() {
+      $.get('https://mastodon.logzinga.com/api/v1/accounts/' + username + '/statuses', function(data) {
+        if (data && data.length > 0) {
+          var status = data[0];
+          var html = '<div class="status">';
+          html += '<span class="username">' + status.account.username + '</span>: ';
+          html += '<span class="text">' + status.content + '</span>';
+          html += '</div>';
+          $('#latest-status').html(html);
+        }
+      });
+    }, interval);
+  });
+</script>
+   
     <br></br>
-    <br></br>
+    <!--Lines above news and events only-->
+  </center>
   <h2 style="font-size: 52px;">Media</h2>
   <div class="row">
   <div class="column">
