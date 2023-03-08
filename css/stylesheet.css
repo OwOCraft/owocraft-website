@@ -147,3 +147,37 @@ div.gallery {
     padding: 15px;
     text-align: center;
   }
+
+  .status-container {
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .status {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+    max-width: 500px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .status .username {
+    color: grey;
+  }
+  
+  .status .text {
+    color: black;
+    margin-left: 10px;
+  }
+  
+  .status .media {
+    display: block;
+    margin: 10px 0;
+    max-width: 100%;
+  }
+  .status .media img, 
+.status .media video {
+  max-width: 480px;
+  max-height: 280px;
+}

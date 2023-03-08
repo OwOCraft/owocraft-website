@@ -25,29 +25,61 @@
 </body>
 <body style="background-color: #bfbfbf;">
     <h2 style="font-size: 52px;">Notice Board</h2>
-    <center>
-    <p>Server Events and news</p>
-    <div id="latest-status"></div>
-    <!--The lines below are for news and events only-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).ready(function() {
-    var username = '109952820770190701';
-    var interval = 5000; // update every 5 seconds
-    setInterval(function() {
-      $.get('https://mastodon.logzinga.com/api/v1/accounts/' + username + '/statuses', function(data) {
-        if (data && data.length > 0) {
-          var status = data[0];
-          var html = '<div class="status">';
-          html += '<span class="username">' + status.account.username + '</span>: ';
-          html += '<span class="text">' + status.content + '</span>';
-          html += '</div>';
-          $('#latest-status').html(html);
-        }
-      });
-    }, interval);
-  });
-</script>
+      <p>Server Events and news</p>
+      <p>All Posts come from <a href="https://mastodon.logzinga.com/@owocraft">Mastodon</a></p>
+      <center>
+      <br>
+      <div id="status-container"></div>
+      
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          var username = '109952820770190701';
+          var interval = 5000; // update every 5 seconds
+          var limit = 11; // load the latest status and 10 previous statuses
+          var statuses = [];
+      
+          function displayStatuses() {
+            var html = '';
+            for (var i = 0; i < statuses.length; i++) {
+              var status = statuses[i];
+              html += '<div class="status">';
+              html += '<span class="username">' + status.account.username + '</span>: ';
+              html += '<span class="text">' + status.content + '</span>';
+      
+              // check if the status has media attachments
+              if (status.media_attachments && status.media_attachments.length > 0) {
+                html += '<div class="media">';
+                for (var j = 0; j < status.media_attachments.length; j++) {
+                  var media = status.media_attachments[j];
+                  if (media.type == 'image') {
+                    html += '<img src="' + media.preview_url + '" alt="' + media.description + '">';
+                  } else if (media.type == 'video') {
+                    html += '<video src="' + media.url + '" controls>' + media.description + '</video>';
+                  }
+                }
+                html += '</div>';
+              }
+      
+              html += '</div>';
+            }
+            $('#status-container').html(html);
+          }
+      
+          function loadStatuses() {
+            $.get('https://mastodon.logzinga.com/api/v1/accounts/' + username + '/statuses', { limit: limit }, function(data) {
+              if (data && data.length > 0) {
+                statuses = data.reverse();
+                displayStatuses();
+              }
+            });
+          }
+      
+          setInterval(loadStatuses, interval);
+          loadStatuses();
+        });
+      </script>
+    
    
     <br></br>
     <!--Lines above news and events only-->
@@ -92,7 +124,6 @@
 <br>
 <h2 style="font-size: 57px;">Want to Join?</h2>
 <p>Here are some required mods and applications!</p>
-<p><a href="ocid.html">OwOCraft Citizen ID</a></p>
 <p><a href="https://www.curseforge.com/minecraft/mc-mods/simple-voice-chat">Simple Voice Chat Mod</a></p>
 <br>
 <br>
