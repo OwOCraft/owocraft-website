@@ -43,6 +43,11 @@
             var html = '';
             for (var i = 0; i < statuses.length; i++) {
               var status = statuses[i];
+
+              if (status.reblog && status.reblog.content) {
+        status = status.reblog;
+        content = '<i>Boosted</i>: ' + status.content;
+      }
               html += '<div class="status">';
               html += '<span class="username">' + status.account.username + '</span>: ';
               html += '<span class="text">' + status.content + '</span>';
@@ -69,7 +74,7 @@
           function loadStatuses() {
             $.get('https://mastodon.logzinga.com/api/v1/accounts/' + username + '/statuses', { limit: limit }, function(data) {
               if (data && data.length > 0) {
-                statuses = data.reverse();
+                statuses = data;
                 displayStatuses();
               }
             });
