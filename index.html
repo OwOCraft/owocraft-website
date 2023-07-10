@@ -38,7 +38,7 @@
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
         $(document).ready(function() {
-          var username = '110307222754574497';
+          var username = '01H3BVNVAH8DWHJ2D59376Y5CM';
           var interval = 5000; // update every 5 seconds
           var limit = 11; // load the latest status and 10 previous statuses
           var statuses = [];
@@ -76,7 +76,7 @@
           }
       
           function loadStatuses() {
-            $.get('https://mastodon.logzinga.com/api/v1/accounts/' + username + '/statuses', { limit: limit }, function(data) {
+            $.get('https://owocrafts.logzinga.com/api/v1/accounts/' + username + '/statuses', { limit: limit }, function(data) {
               if (data && data.length > 0) {
                 statuses = data;
                 displayStatuses();
